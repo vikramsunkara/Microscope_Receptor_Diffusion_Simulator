@@ -1,3 +1,8 @@
+##
+# Author : Vikram Sunkara. 
+#         The ReaDDy code was writen by Christoph Frohner, which was then adapted by Vikram Sunkara.
+##
+
 import os
 import numpy as np
 import readdy
