@@ -119,7 +119,8 @@ def plot_particles(X, Y, shift=25, scale=4, image_pixs=200, intensity=1200, prop
 
 	# Iterate over all particles and render it.
 	for i in range(len(X)):
-		dots.append(draw_points(X_adjusted[i],Y_adjusted[i]) + add_noise(0.01*intensity)) # adding some minor noise to not make the signal a pure circle
+		if (X_adjusted[i] < image_pixs)  and (Y_adjusted[i] < image_pixs):
+			dots.append(draw_points(X_adjusted[i],Y_adjusted[i]) + add_noise(0.01*intensity)) # adding some minor noise to not make the signal a pure circle
 
 	Dots = np.array(dots)
 	return np.sum(Dots, axis=0) + add_noise(proportion_of_noise*intensity, smooth=True)
@@ -140,7 +141,7 @@ def Render_Trajecs(filename, save_name=None):
 
 
 	"""
-	print(" Opening Trajectories: %s"%(filename))
+	print("Opening Trajectories: %s"%(filename))
 	f = open("%s.pck"%(filename),"rb")
 	stuff = pickle.load(f)
 	f.close()
@@ -195,10 +196,22 @@ def play_Movie(filename):
 
 if __name__ == '__main__':
 	# Example of how to run the code.
+	'''
 	n_partices = 100
-
+	
+	### Single Diffsion Examples
+	
 	num_replicates = 5
 	for i in range(num_replicates):
 		name = "Sims_D_0p5_numPart_%d_run_%d_"%(n_partices,i+1)
 		Render_Trajecs(name)
+	'''
+
+	### Mixed Diffsion Examples
+	num_replicates = 10
+	for i in range(num_replicates):
+		name = "Multi_Sims_D_ALL_numPart_%d_run_%d_"%(99,i+1)
+		Render_Trajecs(name)
+
+	#Render_Trajecs(name)
 
