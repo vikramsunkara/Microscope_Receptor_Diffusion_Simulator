@@ -161,7 +161,7 @@ def Render_Trajecs(filename, save_name=None):
 
 	# Save the image stack in to a tiff stack
 	Tiff_Stack = np.array(Image_Stack,dtype=np.uint16)
-	tiff.imsave("Fake_%s_Tiff_Stack.tiff"%(save_name), Tiff_Stack)
+	tiff.imsave("Simulated_%s_Tiff_Stack.tiff"%(save_name), Tiff_Stack)
 
 	print("Images Saved. %s"%(save_name))
 
